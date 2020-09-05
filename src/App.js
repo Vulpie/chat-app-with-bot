@@ -2,12 +2,15 @@ import React from 'react'
 
 import './scss/App.scss'
 import RasaContextProvider from './contexts/RasaContext'
+import SendForm from './components/SendForm'
 
 function App() {
 	return (
-		<RasaContextProvider>
-			<div className="App"></div>
-		</RasaContextProvider>
+		<div className="App">
+			<RasaContextProvider>
+				<SendForm />
+			</RasaContextProvider>
+		</div>
 	)
 }
 

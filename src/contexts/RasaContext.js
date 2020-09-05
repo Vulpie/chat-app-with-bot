@@ -7,10 +7,13 @@ const RasaContextProvider = (props) => {
 	const [rasaSocket, setRasaSocket] = useState()
 	useEffect(() => {
 		const socket = io('http://localhost:5005')
+		socket.on('connect', () => {
+			console.log(`connect:${socket.id}`)
+		})
 		setRasaSocket(socket)
 	}, [])
 	return (
-		<RasaContext.Provider values={rasaSocket}>
+		<RasaContext.Provider value={{ rasaSocket }}>
 			{props.children}
 		</RasaContext.Provider>
 	)
