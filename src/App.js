@@ -1,14 +1,15 @@
 import React from 'react'
 
 import './scss/App.scss'
-import MainDisplayUI from './components/ui/MainDisplayUI'
-import PanelUI from './components/ui/PanelUI'
+import Main from './components/Main'
+import AuthContextProvider from './contexts/AuthContext'
 
 function App() {
 	return (
 		<div className="ui">
-			<PanelUI />
-			<MainDisplayUI />
+			<AuthContextProvider>
+				<Main />
+			</AuthContextProvider>
 		</div>
 	)
 }
