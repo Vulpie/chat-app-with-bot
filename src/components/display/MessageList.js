@@ -1,8 +1,10 @@
 import React, { useContext, useEffect } from 'react'
 import { RasaContext } from '../../contexts/RasaContext'
+import { MessagesContext } from '../../contexts/MessagesContext'
+import Message from './Message'
 
 const MessageList = () => {
-	//const { messages } = useContext(MessagesContext)
+	const { messages } = useContext(MessagesContext)
 	const { rasaSocket } = useContext(RasaContext)
 
 	useEffect(() => {
@@ -14,9 +16,21 @@ const MessageList = () => {
 		})
 		// eslint-disable-next-line
 	}, [])
+
+	const displayMessages = () => {
+		return messages.map((message) => (
+			<Message
+				key={message.id}
+				author={message.author}
+				content={message.content}
+				createdAt={message.createdAt}
+			/>
+		))
+	}
+
 	return (
 		<div className="ui__message-list">
-			<p>message list</p>
+			{messages.length === 0 ? <p>No messages</p> : displayMessages()}
 		</div>
 	)
 }
