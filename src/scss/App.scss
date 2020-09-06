@@ -9,13 +9,13 @@
 	flex-direction: row;
 
 	&__panel {
-		width: 30%;
+		width: 20%;
 		height: 100%;
 		background-color: grey;
 	}
 
 	&__main-display {
-		width: 70%;
+		width: 80%;
 		height: 100%;
 		display: flex;
 		flex-direction: column-reverse;
@@ -71,8 +71,9 @@
 	border-top: 1px dotted black;
 
 	&__author {
-		font-size: 1.5rem;
+		font-weight: 700;
 		width: 10%;
+		align-self: center;
 	}
 	&__content {
 		padding: 10px;
