@@ -2,19 +2,19 @@ import React, { useContext } from 'react'
 
 import MainDisplayUI from './ui/MainDisplayUI'
 import PanelUI from './ui/PanelUI'
-import LoginScreen from './ui/LoginScreen'
 import { UserContext } from '../contexts/UserContext'
+import DefaultScreen from './ui/DefaultScreen'
 
 const Main = () => {
 	const { user } = useContext(UserContext)
-	console.log('user', user)
+
 	const screen = (
 		<>
 			<PanelUI />
 			<MainDisplayUI />
 		</>
 	)
-	return user.isAuthenticated === true ? screen : <LoginScreen />
+	return user.isAuthenticated ? screen : <DefaultScreen />
 }
 
 export default Main

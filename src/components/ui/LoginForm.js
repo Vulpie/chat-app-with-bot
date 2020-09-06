@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { UserContext } from '../../contexts/UserContext'
 
-const LoginScreen = () => {
+const LoginForm = () => {
 	const [login, setLogin] = useState('')
 	const [password, setPassword] = useState('')
 	const { dispatch: userDispatch } = useContext(UserContext)
@@ -44,4 +44,4 @@ const LoginScreen = () => {
 	)
 }
 
-export default LoginScreen
+export default LoginForm
