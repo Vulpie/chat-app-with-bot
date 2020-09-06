@@ -17,14 +17,9 @@
 	&__main-display {
 		width: 70%;
 		height: 100%;
+		display: flex;
+		flex-direction: column-reverse;
 	}
-}
-
-.ui__main-display {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column-reverse;
 }
 
 .message-form {
@@ -59,5 +54,30 @@
 	&__button:hover {
 		background-color: rgb(165, 107, 231);
 		cursor: pointer;
+	}
+}
+
+.message {
+	width: 100%;
+	margin: 1px;
+	padding: 0;
+	height: fit-content;
+	min-height: 50px;
+	display: flex;
+	flex-direction: row;
+	border-top: 1px dotted black;
+
+	&__author {
+		font-size: 1.5rem;
+		width: 10%;
+	}
+	&__content {
+		padding: 10px;
+		width: 80%;
+	}
+	&__createdAt {
+		font-size: 0.8rem;
+		font-style: italic;
+		width: 10%;
 	}
 }
