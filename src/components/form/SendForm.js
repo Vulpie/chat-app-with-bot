@@ -12,14 +12,17 @@ const SendForm = () => {
 		setUserInput('')
 	}
 	return (
-		<form onSubmit={(e) => handleSendButton(e)}>
+		<form onSubmit={(e) => handleSendButton(e)} className="message-form">
 			<input
+				className="message-form__input"
 				type="text"
 				value={userInput}
 				onChange={(e) => setUserInput(e.target.value)}
 				name="user_input"
 			/>
-			<button>Send</button>
+			<button className="message-form__button" type="submit">
+				Send
+			</button>
 		</form>
 	)
 }

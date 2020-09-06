@@ -19,3 +19,45 @@
 		height: 100%;
 	}
 }
+
+.ui__main-display {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column-reverse;
+}
+
+.message-form {
+	width: 100%;
+	height: 5%;
+	min-height: 30px;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: 1px solid black;
+
+	&__input {
+		box-sizing: border-box;
+		border: none;
+		width: 80%;
+		margin: 0;
+		padding: 5px;
+		border: 1px solid black;
+		height: 100%;
+	}
+
+	&__button {
+		box-sizing: border-box;
+		border: none;
+		width: 20%;
+		margin: 0;
+		padding: 5px;
+		border: 1px solid black;
+		height: 100%;
+	}
+
+	&__button:hover {
+		background-color: rgb(165, 107, 231);
+		cursor: pointer;
+	}
+}
