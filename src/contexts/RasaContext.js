@@ -1,19 +1,19 @@
-import React, { useState, createContext, useEffect } from 'react'
+import React, { createContext, useEffect, useReducer } from 'react'
 import io from 'socket.io-client'
+import { RasaReducer } from '../reducers/RasaReducer'
 
 export const RasaContext = createContext()
 
 const RasaContextProvider = (props) => {
-	const [rasaSocket, setRasaSocket] = useState()
+	const socket = io('http://localhost:5005')
+	const [rasaSocket, dispatch] = useReducer(RasaReducer, socket)
 	useEffect(() => {
-		const socket = io('http://localhost:5005')
-		socket.on('connect', () => {
-			console.log(`connect:${socket.id}`)
+		rasaSocket.on('connect', () => {
+			console.log(`connect:${rasaSocket.id}`)
 		})
-		setRasaSocket(socket)
 	}, [])
 	return (
-		<RasaContext.Provider value={{ rasaSocket }}>
+		<RasaContext.Provider value={{ rasaSocket, dispatch }}>
 			{props.children}
 		</RasaContext.Provider>
 	)
