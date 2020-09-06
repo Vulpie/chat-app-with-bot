@@ -4,14 +4,7 @@ import { MessagesReducer } from '../reducers/MessagesReducer'
 export const MessagesContext = createContext()
 
 const MessagesContextProvider = (props) => {
-	const [messages, dispatch] = useReducer(MessagesReducer, [
-		{
-			id: 1,
-			content: 'Hello Rasa',
-			createdAt: '09/10/2020',
-			author: 'Vulpie',
-		},
-	])
+	const [messages, dispatch] = useReducer(MessagesReducer, [])
 	return (
 		<MessagesContext.Provider value={{ messages, dispatch }}>
 			{props.children}

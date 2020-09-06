@@ -19,6 +19,9 @@
 		height: 100%;
 		display: flex;
 		flex-direction: column-reverse;
+		&_message-list {
+			background-color: rgb(255, 223, 223);
+		}
 	}
 }
 
