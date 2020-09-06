@@ -1,14 +1,21 @@
 import React, { useState, useContext } from 'react'
-import { AuthContext } from '../../contexts/AuthContext'
+import { UserContext } from '../../contexts/UserContext'
 
 const LoginScreen = () => {
 	const [login, setLogin] = useState('')
 	const [password, setPassword] = useState('')
-	const { setIsAuthenticated } = useContext(AuthContext)
+	const { dispatch: userDispatch } = useContext(UserContext)
+
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		if (login && password) {
-			setIsAuthenticated(true)
+			userDispatch({
+				type: 'AUTHENTICATE_USER',
+				payload: {
+					login,
+					password,
+				},
+			})
 		}
 		setLogin('')
 		setPassword('')

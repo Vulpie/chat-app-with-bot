@@ -2,14 +2,14 @@ import React from 'react'
 
 import './scss/App.scss'
 import Main from './components/Main'
-import AuthContextProvider from './contexts/AuthContext'
+import UserContextProvider from './contexts/UserContext'
 
 function App() {
 	return (
 		<div className="ui">
-			<AuthContextProvider>
+			<UserContextProvider>
 				<Main />
-			</AuthContextProvider>
+			</UserContextProvider>
 		</div>
 	)
 }
