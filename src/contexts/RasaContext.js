@@ -11,6 +11,7 @@ const RasaContextProvider = (props) => {
 		rasaSocket.on('connect', () => {
 			console.log(`connect:${rasaSocket.id}`)
 		})
+		// eslint-disable-next-line
 	}, [])
 	return (
 		<RasaContext.Provider value={{ rasaSocket, dispatch }}>

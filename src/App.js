@@ -1,20 +1,14 @@
 import React from 'react'
 
 import './scss/App.scss'
-import RasaContextProvider from './contexts/RasaContext'
-import MessagesContextProvider from './contexts/MessagesContext'
-import SendForm from './components/ui/SendForm'
-import MessageList from './components/ui/MessageList'
+import MainDisplayUI from './components/ui/MainDisplayUI'
+import PanelUI from './components/ui/PanelUI'
 
 function App() {
 	return (
-		<div className="App">
-			<MessagesContextProvider>
-				<RasaContextProvider>
-					<MessageList />
-					<SendForm />
-				</RasaContextProvider>
-			</MessagesContextProvider>
+		<div className="ui">
+			<PanelUI />
+			<MainDisplayUI />
 		</div>
 	)
 }
