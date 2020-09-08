@@ -1,3 +1,38 @@
+$base-color: rgb(88, 61, 99);
+$base-accents: rgb(165, 107, 231);
+$message-background: rgb(255, 223, 223);
+$button: rgb(165, 107, 231);
+$button-hover: rgb(165, 107, 231);
+
+@mixin global-button {
+	padding: 10px;
+	border-radius: 15px;
+	background-color: $base-accents;
+}
+
+@mixin global-button-hover {
+	background-color: $base-color;
+	cursor: pointer;
+}
+
+@mixin global-input {
+	width: 40%;
+	margin: 10px 0;
+	padding: 10px;
+	border-radius: 15px;
+}
+
+@mixin global-input-focus {
+	background-color: $base-accents;
+}
+
+@mixin global-label {
+	font-weight: 700;
+	margin: 10px 0;
+	font-size: 1.3rem;
+	color: $base-accents;
+}
+
 .ui {
 	width: 100%;
 	height: 100vh;
@@ -11,7 +46,7 @@
 	&__panel {
 		width: 20%;
 		height: 100%;
-		background-color: grey;
+		background-color: $base-color;
 	}
 
 	&__main-display {
@@ -20,7 +55,7 @@
 		display: flex;
 		flex-direction: column-reverse;
 		&_message-list {
-			background-color: rgb(255, 223, 223);
+			background-color: $message-background;
 		}
 	}
 
@@ -30,16 +65,34 @@
 		background-image: url('../assets/default.png');
 		background-repeat: no-repeat;
 		background-size: cover;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 		&_navbar {
-			width: 100%;
+			width: 50%;
+			border-radius: 15px;
+			background-color: $base-color;
+
 			&_list {
+				margin: 0;
 				list-style-type: none;
 				width: 100%;
 				display: flex;
+				padding: 0;
+				box-sizing: border-box;
+
 				&_item {
 					width: 50%;
 					height: fit-content;
-					padding: 5px;
+					padding: 15px;
+					border-radius: 15px;
+					box-sizing: border-box;
+				}
+
+				&_item:hover {
+					background-color: $button-hover;
+					cursor: pointer;
 				}
 			}
 		}
@@ -76,7 +129,7 @@
 	}
 
 	&__button:hover {
-		background-color: rgb(165, 107, 231);
+		background-color: $button;
 		cursor: pointer;
 	}
 }
@@ -104,5 +157,47 @@
 		font-size: 0.8rem;
 		font-style: italic;
 		width: 10%;
+	}
+}
+
+.login-screen {
+	margin-top: 5%;
+	background-color: $base-color;
+	width: 40%;
+	padding: 15px;
+	border-radius: 15px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	&__label {
+		@include global-label;
+	}
+
+	&__input {
+		@include global-input;
+	}
+
+	&__input:focus {
+		@include global-input-focus;
+	}
+
+	&__button {
+		@include global-button;
+	}
+
+	&__button:hover {
+		@include global-button-hover;
+	}
+}
+
+.flash {
+	padding: 15px;
+	position: fixed;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	&__error {
+		background-color: rgb(168, 47, 47);
 	}
 }

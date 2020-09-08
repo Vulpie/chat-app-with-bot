@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react'
 import { RasaContext } from '../../contexts/RasaContext'
 import { MessagesContext } from '../../contexts/MessagesContext'
+import { UserContext } from '../../contexts/UserContext'
 
 const SendForm = () => {
 	const { dispatch: dispatchRasaMessage } = useContext(RasaContext)
 	const { dispatch: dispatchMessage } = useContext(MessagesContext)
+	const { user } = useContext(UserContext)
 	const [userInput, setUserInput] = useState('')
 
 	const handleSendButton = (e) => {
@@ -15,7 +17,7 @@ const SendForm = () => {
 			type: 'ADD_MESSAGE',
 			message: {
 				content: message_content,
-				author: 'USER_PLACEHOLDER',
+				author: user.login,
 			},
 		})
 		setUserInput('')

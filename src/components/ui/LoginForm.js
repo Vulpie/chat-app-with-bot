@@ -1,10 +1,12 @@
 import React, { useState, useContext } from 'react'
 import { UserContext } from '../../contexts/UserContext'
+import { FlashContext } from '../../contexts/FlashContext'
 
 const LoginForm = () => {
 	const [login, setLogin] = useState('')
 	const [password, setPassword] = useState('')
 	const { dispatch: userDispatch } = useContext(UserContext)
+	const { dispatch: flashDispatch } = useContext(FlashContext)
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
@@ -14,6 +16,14 @@ const LoginForm = () => {
 				payload: {
 					login,
 					password,
+				},
+			})
+		} else {
+			console.log('Flash message')
+			flashDispatch({
+				type: 'ERROR_MESSAGE',
+				payload: {
+					message_content: 'Incorrect login data',
 				},
 			})
 		}
@@ -39,7 +49,9 @@ const LoginForm = () => {
 				onChange={(e) => setPassword(e.target.value)}
 				value={password}
 			/>
-			<button type="submit">Log In</button>
+			<button type="submit" className="login-screen__button">
+				Log In
+			</button>
 		</form>
 	)
 }
