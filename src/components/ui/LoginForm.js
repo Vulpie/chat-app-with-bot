@@ -23,7 +23,8 @@ const LoginForm = () => {
 			flashDispatch({
 				type: 'ERROR_MESSAGE',
 				payload: {
-					message_content: 'Incorrect login data',
+					message_content: 'Incorrect login or password',
+					persistent: false,
 				},
 			})
 		}

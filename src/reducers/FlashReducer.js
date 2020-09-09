@@ -4,6 +4,7 @@ export const FlashReducer = (state, actions) => {
 			return {
 				message_type: 'error',
 				message_content: actions.payload.message_content,
+				persistent: actions.payload.persistent || false,
 			}
 		default:
 			return state

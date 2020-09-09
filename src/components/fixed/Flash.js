@@ -6,17 +6,22 @@ const Flash = () => {
 	const [visibility, setVisibility] = useState(false)
 
 	useEffect(() => {
-		setVisibility(true)
-		console.log('Popup:', flashMessage)
-		const timer = setTimeout(() => {
-			setVisibility(false)
-		}, 7000)
-		return () => clearTimeout(timer)
+		if (!flashMessage.persistent) {
+			setVisibility(true)
+			const timer = setTimeout(() => {
+				setVisibility(false)
+			}, 7000)
+			return () => clearTimeout(timer)
+		}
 	}, [flashMessage])
+
+	const hideMessage = () => {
+		setVisibility(false)
+	}
 
 	return (
 		visibility && (
-			<div className="flash">
+			<div className="flash" onClick={() => hideMessage()}>
 				<div className={`flash__${flashMessage.message_type}`}>
 					{flashMessage.message_content}
 				</div>

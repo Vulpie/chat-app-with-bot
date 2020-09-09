@@ -192,12 +192,37 @@ $button-hover: rgb(165, 107, 231);
 }
 
 .flash {
-	padding: 15px;
 	position: fixed;
 	bottom: 0;
 	left: 50%;
 	transform: translateX(-50%);
+	z-index: 111;
+
 	&__error {
-		background-color: rgb(168, 47, 47);
+		padding: 30px 50px;
+		background-color: rgba(180, 31, 31, 0.897);
+		border-top-left-radius: 15px;
+		border-top-right-radius: 15px;
+		font-size: 1.2rem;
+		font-weight: 700;
+		cursor: pointer;
+		animation-name: show;
+		animation-duration: 0.5s;
+	}
+
+	&__error:hover {
+		background-color: rgba(201, 35, 35, 0.979);
+	}
+}
+
+@keyframes show {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 1;
 	}
 }
