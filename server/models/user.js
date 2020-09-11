@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
+const validator = require('validator')
 
-const userSchema = new mangoose.Schema({
+const userSchema = new mongoose.Schema({
 	login: {
 		type: String,
 		required: true,
@@ -10,6 +11,27 @@ const userSchema = new mangoose.Schema({
 		type: String,
 		required: true,
 		minlength: 13,
+	},
+	name: {
+		type: String,
+		required: false,
+		trim: true,
+	},
+	surname: {
+		type: String,
+		required: false,
+		trim: true,
+	},
+	email: {
+		type: String,
+		required: true,
+		trim: true,
+		lowercase: true,
+		validate(email) {
+			if (!validator.isEmil(email)) {
+				throw new Error('Invalid email')
+			}
+		},
 	},
 })
 

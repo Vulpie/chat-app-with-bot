@@ -33,6 +33,17 @@ $button-hover: rgb(165, 107, 231);
 	color: $base-accents;
 }
 
+@mixin global-flash-message {
+	padding: 30px 50px;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	font-size: 1.2rem;
+	font-weight: 700;
+	cursor: pointer;
+	animation-name: show;
+	animation-duration: 0.5s;
+}
+
 .ui {
 	width: 100%;
 	height: 100vh;
@@ -199,19 +210,21 @@ $button-hover: rgb(165, 107, 231);
 	z-index: 111;
 
 	&__error {
-		padding: 30px 50px;
+		@include global-flash-message;
 		background-color: rgba(180, 31, 31, 0.897);
-		border-top-left-radius: 15px;
-		border-top-right-radius: 15px;
-		font-size: 1.2rem;
-		font-weight: 700;
-		cursor: pointer;
-		animation-name: show;
-		animation-duration: 0.5s;
 	}
 
 	&__error:hover {
 		background-color: rgba(201, 35, 35, 0.979);
+	}
+
+	&__success {
+		@include global-flash-message;
+		background-color: rgba(12, 160, 32, 0.897);
+	}
+
+	&__success:hover {
+		background-color: rgba(9, 122, 24, 0.897);
 	}
 }
 
