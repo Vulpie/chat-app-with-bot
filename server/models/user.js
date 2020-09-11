@@ -10,16 +10,16 @@ const userSchema = new mongoose.Schema({
 	password: {
 		type: String,
 		required: true,
-		minlength: 13,
+		minlength: 8,
 	},
 	name: {
 		type: String,
-		required: false,
+		required: true,
 		trim: true,
 	},
 	surname: {
 		type: String,
-		required: false,
+		required: true,
 		trim: true,
 	},
 	email: {
@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema({
 		trim: true,
 		lowercase: true,
 		validate(email) {
-			if (!validator.isEmil(email)) {
+			if (!validator.isEmail(email)) {
 				throw new Error('Invalid email')
 			}
 		},
