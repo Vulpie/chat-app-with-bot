@@ -1,8 +1,6 @@
 const User = require('../models/user')
 
 exports.registerNewUser = async (req, res) => {
-	console.log('New register request')
-
 	const user = new User(req.body)
 
 	try {
