@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react'
 import { FlashContext } from '../../contexts/FlashContext'
-
+import { UserContext } from '../../contexts/UserContext'
 const RegisterForm = () => {
 	const { dispatch: flashDispatch } = useContext(FlashContext)
+	const { dispatch: userDispatch } = useContext(UserContext)
 	const [login, setLogin] = useState('')
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
@@ -12,32 +13,52 @@ const RegisterForm = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		if (password === re_password && password.length > 8) {
-			fetch('/users/register', {
-				method: 'post',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ login, email, password, name, surname }),
-			})
-				.then((res) => res.json())
-				.then((res) => {
-					flashDispatch({
-						type: 'SUCCESS_MESSAGE',
-						payload: {
-							message_content: 'Rejestracja przebiegła pomyślnie',
-							persistent: false,
-						},
-					})
-					console.log(res)
-				})
-		} else {
-			flashDispatch({
-				type: 'ERROR_MESSAGE',
+		if (password === re_password && password.length >= 8) {
+			// fetch('/users/register', {
+			// 	method: 'post',
+			// 	headers: { 'Content-Type': 'application/json' },
+			// 	body: JSON.stringify({ login, email, password, name, surname }),
+			// })
+			// 	.then((res) => res.json())
+			// 	.then((res) => {
+			// 		flashDispatch({
+			// 			type: 'SUCCESS_MESSAGE',
+			// 			payload: {
+			// 				message_content: 'Rejestracja przebiegła pomyślnie',
+			// 				persistent: false,
+			// 			},
+			// 		})
+			// 		console.log(res)
+			// 	})
+			userDispatch({
+				type: 'CREATE_USER',
 				payload: {
-					message_content:
-						'Hasła powinny być jednakowe i mieć długość co najmneij 8 znaków',
-					persistent: false,
+					login,
+					email,
+					password,
+					name,
+					surname,
 				},
 			})
+		} else {
+			if (password.length < 8) {
+				flashDispatch({
+					type: 'ERROR_MESSAGE',
+					payload: {
+						message_content:
+							'Hasło musi skłądać się co najmniej z 8 znaków',
+						persistent: false,
+					},
+				})
+			} else {
+				flashDispatch({
+					type: 'ERROR_MESSAGE',
+					payload: {
+						message_content: 'Hasła muszą być jednakowe',
+						persistent: false,
+					},
+				})
+			}
 		}
 	}
 
